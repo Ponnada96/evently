@@ -5,7 +5,7 @@ import icon from '@/public/assets/images/logo.svg'
 const Footer = () => {
   return (
 
-    <footer>
+    <footer className="border-t">
       <div className="flex flex-center flex-col gap-4 p-5
             sm:flex-row flex-between w-full text-center wrapper">
         <Link href="/">
