@@ -1,12 +1,12 @@
 'use server'
 
-import { CreatCategoryParams } from "@/types";
+import { CreateCategoryParams } from "@/types";
 import Category from "../database/models/category.model";
 import { connectToDatabase } from "../database";
 import { handleError } from "../utils";
 
 
-export const createCategory = async ({ categoryName }: CreatCategoryParams) => {
+export const createCategory = async ({ categoryName }: CreateCategoryParams) => {
     try {
         await connectToDatabase()
         const response = await Category.create({ name: categoryName })
