@@ -69,23 +69,6 @@ const EventForm = ({ userId, type }: eventParams) => {
         } 
     }
 
-    // const createEvent = async (values: eventSchemaType)=>{ 
-    //    try{
-    //        const newEvent= await createEvent({
-    //            event: values,
-    //            userId,
-    //            path:'/profile'
-    //        })
-    //        if(newEvent){
-    //            form.reset()
-    //            router.push(`/events/${newEvent._id}`)
-    //        }
-    //    }
-    //    catch(error){
-    //     console.log(error)
-    //    }   
-    // }
-
     return (
         <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col gap-5">

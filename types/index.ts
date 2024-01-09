@@ -20,7 +20,6 @@ export type CreateCategoryParams = {
 }
 
 //Event Params
-
 export type CreateEventParams = {
     userId: string
     event: {
@@ -36,4 +35,8 @@ export type CreateEventParams = {
         url: string;
     }
     path: string
+}
+
+export type SearchParamProps={
+    params: { id: string }
 }
