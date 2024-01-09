@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
 import Hero from "@/public/assets/images/hero.png"
+import Collection from "@/components/shared/Collection";
 
 export default function Home() {
   return (
@@ -27,6 +28,15 @@ export default function Home() {
           Search
           Category Filter
         </div>
+        <Collection  
+        data={[]}
+        emptyTitle="No Events Found"
+        emptyStateSubText="Come back later"
+        collectionType="All_Events"
+        limit={6}
+        page={1}
+        totalPages={2}
+        />
       </section>
     </>
 
