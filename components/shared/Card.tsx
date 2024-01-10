@@ -44,16 +44,16 @@ const Card = ({ event, hasOrderLink, hidePrice }: CardProps) => {
             }
 
             <Link href={`/events/${event._id}`}
-                className='flex flex-col gap-5 md:gap-4 min-h-[230px] p-4' >
+                className='flex flex-col gap-3 md:gap-4 min-h-[230px] p-4' >
                 {!hidePrice &&
 
                     <div className='flex gap-2'>
                         <span className='p-semibold-14 w-min rounded-full
-                     bg-green-100 px-4 py-2 text-green-60'>
+                     bg-green-100 px-4 py-1 text-green-60'>
                             {event.isFree ? "FREE" : `$${event.price}`}
                         </span>
                         <p className='p-semibold-14 w-min rounded-full 
-                              bg-grey-500/10 px-4 py-2 text-grey-500'>
+                              bg-grey-500/10 px-4 py-1 text-grey-500 line-clamp-1'>
                             {event.category.name}
                         </p>
                     </div>
@@ -72,7 +72,7 @@ const Card = ({ event, hasOrderLink, hidePrice }: CardProps) => {
                         {event.organizer.firstName} {event.organizer.lastName}
                     </p>
                     {
-                        !hasOrderLink && (
+                        hasOrderLink && (
                             <Link className='flex gap-2' href={`orders?eventId=${event._id}`}>
                                 <p className='text-primary-500'>Order Details</p>
                                 <Image src={Arrow} alt="arrow icon" width={10} height={10} />
