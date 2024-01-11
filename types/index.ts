@@ -67,6 +67,15 @@ export type UpdateEventParams = {
     path: string
 }
 
-export type SearchParamProps={
+export type SearchParamProps = {
     params: { id: string }
+    searchParams: { [key: string]: string | string[] | undefined }
+}
+
+
+export type GetRelatedEventsByCategoryParams = {
+    categoryId: string
+    eventId: string
+    limit?: number
+    page: number | string
 }
