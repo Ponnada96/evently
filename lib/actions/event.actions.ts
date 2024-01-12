@@ -2,7 +2,7 @@
 
 import { handleError } from "../utils"
 import { connectToDatabase } from "../database"
-import { CreateEventParams, DeleteEventParams, GetAllEventParams, GetRelatedEventsByCategoryParams, UpdateEventParams } from "@/types"
+import { CreateEventParams, DeleteEventParams, GetAllEventParams, GetEventsByUserParams, GetRelatedEventsByCategoryParams, UpdateEventParams } from "@/types"
 import User from "../database/models/user.model"
 import Event from "../database/models/event.model"
 import Category from "../database/models/category.model"
@@ -107,7 +107,7 @@ export const getRelatedEventsByCategory = async ({
     limit = 3,
     page = 1
 }: GetRelatedEventsByCategoryParams) => {
-    try{
+    try {
         await connectToDatabase()
 
         const skipCount = (Number(page) - 1) * limit
@@ -126,3 +126,22 @@ export const getRelatedEventsByCategory = async ({
     }
 }
 
+export const getEventsByUser = async ({ userId, limit = 6, page }: GetEventsByUserParams) => {
+    try {
+        await connectToDatabase();
+        const conditions = { organizer: userId }
+        const skipCount = (page - 1) * limit
+
+        const eventQuery = Event.find(conditions)
+            .sort({ createdAt: 'desc' })
+            .skip(skipCount)
+            .limit(limit)
+
+        const events = await populateEvent(eventQuery)
+        const eventsCount = await Event.countDocuments(conditions)
+        return { data: JSON.parse(JSON.stringify(events)), totalPages: Math.ceil(eventsCount / limit) }
+    }
+    catch (error) {
+        handleError(error)
+    }
+}
