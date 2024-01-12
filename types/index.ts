@@ -85,3 +85,11 @@ export type GetEventsByUserParams = {
     limit?: number
     page: number
 }
+
+export type CheckoutOrderParams={
+    eventTitle: string
+    eventId: string
+    price: string
+    isFree: boolean
+    buyerId: string
+}

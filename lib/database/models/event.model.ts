@@ -1,5 +1,16 @@
 import { Schema, model, models, Document, Types } from "mongoose";
 
+type organizerType = {
+    _id: string,
+    firstName: string,
+    lastName: string
+}
+
+type categoryType = {
+    _id: string, 
+    name: string
+}
+
 export interface IEvent extends Document {
     _id: string;
     title: string;
@@ -9,11 +20,11 @@ export interface IEvent extends Document {
     imageUrl: string;
     startDateTime: Date;
     endDateTime: Date;
-    price?: string;
+    price: string;
     isFree: boolean;
-    url?:string;
-    category: Types.ObjectId | string;
-    organizer: Types.ObjectId | string;
+    url?: string;
+    category: categoryType;
+    organizer: organizerType;
 }
 
 const EventSchema = new Schema({

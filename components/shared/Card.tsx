@@ -18,8 +18,8 @@ const Card = ({ event, hasOrderLink, hidePrice }: CardProps) => {
 
     const session = auth();
     const userId = session.sessionClaims?.userId as string;
-    const isEventCreator = userId === event.organizer._id as string
-
+    const isEventCreator = userId === event.organizer._id;
+    
     return (
         <div className='group relative flex min-h-[380px] w-full max-w-[400px]
                         flex-col overflow-hidden rounded-xl bg-white shadow-md
