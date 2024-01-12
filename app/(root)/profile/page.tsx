@@ -19,7 +19,7 @@ const Profile = async () => {
                         bg-cover bg-center py-5 md:py-10'>
                 <div className='wrapper flex items-center justify-center sm:justify-between'>
                     <h3 className='h3-bold text-center sm:text-left'>My Tickets</h3>
-                    <Button asChild className='button hidden sm:flex'>
+                    <Button asChild className='button hidden sm:flex' size={'lg'}>
                         <Link href='/#events'>
                             Explore Events
                         </Link>
@@ -44,7 +44,7 @@ const Profile = async () => {
                         bg-cover bg-center py-5 md:py-10'>
                 <div className='wrapper flex items-center justify-center sm:justify-between'>
                     <h3 className='h3-bold text-center sm:text-left'>Events Organized</h3>
-                    <Button asChild className='button hidden sm:flex'>
+                    <Button asChild size={'lg'} className='button hidden sm:flex'>
                         <Link href='/events/create'>
                             Create New Event
                         </Link>

@@ -4,6 +4,7 @@ import Image from 'next/image'
 import React from 'react'
 import { formatDateTime } from '@/lib/utils'
 import Collection from '@/components/shared/Collection'
+import CheckoutButton from '@/components/shared/CheckoutButton'
 
 const EventDetails = async ({ params: { id } , searchParams}: SearchParamProps) => {
     const event = await getEventById(id)
@@ -35,6 +36,7 @@ const EventDetails = async ({ params: { id } , searchParams}: SearchParamProps) 
                                     by {' '}
                                     <span className='text-primary-500'>{event.organizer.firstName} {event.organizer.lastName}</span>
                                 </p>
+                                <CheckoutButton event={event}/>
                             </div>
                         </div>
                         <div className='flex flex-col gap-5'>
