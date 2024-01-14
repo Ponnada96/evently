@@ -86,7 +86,7 @@ export type GetEventsByUserParams = {
     page: number
 }
 
-export type CheckoutOrderParams={
+export type CheckoutOrderParams = {
     eventTitle: string
     eventId: string
     price: string
@@ -94,10 +94,22 @@ export type CheckoutOrderParams={
     buyerId: string
 }
 
-export type CreateOrderParams={
+export type CreateOrderParams = {
     stripeId: string
     eventId: string
     buyerId: string
     totalAmount: string
     createdAt: Date
+}
+
+
+export type GetOrdersByEventParams = {
+    eventId: string
+    searchString: string
+}
+
+export type GetOrdersByUserParams = {
+    userId: string | null,
+    limit?: number,
+    page: string | number | null
 }
