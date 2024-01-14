@@ -13,8 +13,6 @@ const CheckoutButton = ({ event }: { event: IEvent }) => {
 
     const userId = user?.publicMetadata.userId as string;
     const hasEventClosed = new Date(event.endDateTime) < new Date();
-    console.log(user)
-    console.log(userId)
     return (
         <div className='flex items-center gap-3'>
             {/* Cannot buy past tickets */}
