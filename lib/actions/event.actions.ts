@@ -49,9 +49,17 @@ export const getAllEvents = async ({ query, limit = 6, page, category }: GetAllE
 
     try {
         await connectToDatabase()
-        const conditions = {}
+        const titleConditions = query ? { title: { $regex: query, $options: 'i' } } : {}
+        const categoryConditions = category ? await getCategoryByName(category) : null
+
+        const conditions = {
+            $and: [titleConditions, categoryConditions ? { category: categoryConditions._id } : {}]
+        }
+        const skipCount = (Number(page) - 1) * limit
+
         const eventsQuery = Event.find(conditions)
-            .skip(0)
+            .sort({ createdAt: 'desc' })
+            .skip(skipCount)
             .limit(limit)
 
         const events = await populateEvent(eventsQuery);
@@ -65,6 +73,10 @@ export const getAllEvents = async ({ query, limit = 6, page, category }: GetAllE
     catch (error) {
         handleError(error)
     }
+}
+
+const getCategoryByName = async (name: string)=>{
+    return Category.findOne({ name: { $regex: name, $options: 'i' } })
 }
 
 export const deleteEvent = async ({ eventId, path }: DeleteEventParams) => {
