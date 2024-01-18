@@ -164,7 +164,7 @@ const EventForm = ({ userId, type, event, eventId }: eventParams) => {
                         render={({ field }) => (
                             <FormItem className="w-full">
                                 <FormControl>
-                                    <div className="flex-center  bg-grey-50 h-[54px] w-full overflow-hidden rounded-full px-4 py-2">
+                                    <div className="flex-center  bg-grey-50 dark:bg-grey-600 h-[54px] w-full overflow-hidden rounded-full px-4 py-2">
                                         <Image src={LocationIcon} alt="location" height={24} width={24} />
                                         <Input className="input-field" placeholder="Event location or Online" {...field} />
                                     </div>
@@ -181,9 +181,9 @@ const EventForm = ({ userId, type, event, eventId }: eventParams) => {
                         render={({ field }) => (
                             <FormItem className="w-full">
                                 <FormControl>
-                                    <div className="flex-center bg-grey-50 h-[54px] w-full overflow-hidden rounded-full px-4 py-2">
+                                    <div className="flex-center bg-grey-50 dark:bg-grey-600 h-[54px] w-full overflow-hidden rounded-full px-4 py-2">
                                         <Image src={CalenderIcon} alt="calender" height={24} width={24} className="filter-grey" />
-                                        <p className="ml-3 text-gray-600 whitespace-nowrap">Start Date:</p>
+                                        <p className="ml-3 text-gray-600 dark:text-gray-300  whitespace-nowrap">Start Date:</p>
                                         <DatePicker selected={field.value} onChange={(date: Date) => field.onChange(date)}
                                             showTimeSelect
                                             timeInputLabel="Time:"
@@ -201,9 +201,9 @@ const EventForm = ({ userId, type, event, eventId }: eventParams) => {
                         render={({ field }) => (
                             <FormItem className="w-full">
                                 <FormControl>
-                                    <div className="flex-center bg-grey-50 h-[54px] w-full overflow-hidden rounded-full px-4 py-2">
+                                    <div className="flex-center bg-grey-50 dark:bg-grey-600 h-[54px] w-full overflow-hidden rounded-full px-4 py-2">
                                         <Image src={CalenderIcon} alt="calender" height={24} width={24} className="filter-grey" />
-                                        <p className="ml-3 text-gray-600 whitespace-nowrap">End Date:</p>
+                                        <p className="ml-3 text-gray-600 dark:text-gray-300 whitespace-nowrap">End Date:</p>
                                         <DatePicker selected={field.value} onChange={(date: Date) => field.onChange(date)}
                                             showTimeSelect
                                             timeInputLabel="Time:"
@@ -223,9 +223,9 @@ const EventForm = ({ userId, type, event, eventId }: eventParams) => {
                         render={({ field }) => (
                             <FormItem className="w-full">
                                 <FormControl>
-                                    <div className="flex-center bg-grey-50 h-[54px] w-full overflow-hidden rounded-full px-4 py-2">
+                                    <div className="flex-center bg-grey-50  dark:bg-grey-600 h-[54px] w-full overflow-hidden rounded-full px-4 py-2">
                                         <Image src={DollarIcon} alt="dollar" height={24} width={24} className="filter-grey" />
-                                        <Input type="number" placeholder="price" {...field} className="p-regular-16 border-0 bg-grey-50 outline-offset-0 focus:border-0 focus-visible:ring-0 focus-visible:ring-offset-0" />
+                                        <Input type="number" placeholder="price" {...field} className="p-regular-16 border-0 bg-grey-50 dark:bg-grey-600 dark:placeholder:text-gray-300  outline-offset-0 focus:border-0 focus-visible:ring-0 focus-visible:ring-offset-0" />
                                         <FormField
                                             control={form.control}
                                             name="isFree"
@@ -236,7 +236,7 @@ const EventForm = ({ userId, type, event, eventId }: eventParams) => {
                                                             <label htmlFor="isFree" className="whitespace-nowrap pr-3 leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
                                                                 Free Ticket
                                                             </label>
-                                                            <Checkbox className="mr-2 h-5 w-5 border-2 border-primary-500"
+                                                            <Checkbox className="mr-2 h-6 w-6 border-[3px] border-primary-500"
                                                                 checked={field.value} onCheckedChange={field.onChange} />
                                                         </div>
                                                     </FormControl>
@@ -256,7 +256,7 @@ const EventForm = ({ userId, type, event, eventId }: eventParams) => {
                         render={({ field }) => (
                             <FormItem className="w-full">
                                 <FormControl>
-                                    <div className="flex-center bg-grey-50 h-[54px] w-full overflow-hidden rounded-full px-4 py-2">
+                                    <div className="flex-center bg-grey-50 dark:bg-grey-600 h-[54px] w-full overflow-hidden rounded-full px-4 py-2">
                                         <Image src={LinkIcon} alt="location" height={24} width={24} />
                                         <Input className="input-field" placeholder="URL" {...field} />
                                     </div>
