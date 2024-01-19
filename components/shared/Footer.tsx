@@ -1,6 +1,4 @@
-import Image from "next/image"
-import Link from "next/link"
-import icon from '@/public/assets/images/logo.svg'
+import AppIcon from "./AppIcon"
 
 const Footer = () => {
   return (
@@ -8,10 +6,7 @@ const Footer = () => {
     <footer className="border-t">
       <div className="flex flex-center flex-col gap-4 p-5
             sm:flex-row flex-between w-full text-center wrapper">
-        <Link href="/">
-          <Image src={icon} alt="icon" width={128} height={38} />
-        </Link>
-
+         <AppIcon/>
         <p>
           2023 Evently. All Rights Reserved.
         </p>

@@ -1,20 +1,18 @@
 import Link from "next/link"
-import icon from '@/public/assets/images/logo.svg'
-import Image from "next/image"
 import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs"
 import { Button } from "../ui/button"
 import NavItems from "./NavItems"
 import MobileNav from "./MobileNav"
 import ThemeSwitch from "./ThemeSwitch"
+import AppIcon from "./AppIcon"
 
 
 const Header = () => {
+
   return (
     <header className="w-full border-b">
       <div className="wrapper flex items-center justify-between">
-        <Link href="/" className="w-36">
-          <Image src={icon} width={128} height={38} alt={"Evently logo"} />
-        </Link>
+        <AppIcon />
 
         <SignedIn>
           <nav className=" md:flex-between hidden w-full max-w-xs">
