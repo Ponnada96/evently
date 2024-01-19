@@ -22,7 +22,7 @@ const Card = ({ event, hasOrderLink, hidePrice }: CardProps) => {
 
     return (
         <div className='group relative flex min-h-[380px] w-full max-w-[400px]
-                        flex-col overflow-hidden rounded-xl bg-white shadow-md hover:shadow-lg hover:shadow-gray-400 
+                        flex-col overflow-hidden rounded-xl bg-white dark:bg-primary-foreground shadow-md hover:shadow-lg hover:shadow-gray-400 
                         transition-all  md:min-h-[438px]'>
 
             <Link href={`/events/${event._id}`}
@@ -34,9 +34,9 @@ const Card = ({ event, hasOrderLink, hidePrice }: CardProps) => {
             {
                 isEventCreator && !hidePrice && (
                     <div className='absolute top-2 right-2 flex flex-col gap-4 rounded-xl
-                                    bg-white p-3 shadow-sm transition-all'>
+                                    bg-white dark:bg-primary-foreground p-3 shadow-sm transition-all'>
                         <Link href={`/events/${event._id}/update`}>
-                            <Image src={Edit} alt='edit' width={20} height={20} />
+                            <Image src={Edit} alt='edit' className='w-5 h-5 hover:w-7 hover:h-7 hover:shadow-sm ' />
                         </Link>
                         <DeleteConfirmation eventId={event._id} />
                     </div>
@@ -47,27 +47,27 @@ const Card = ({ event, hasOrderLink, hidePrice }: CardProps) => {
                 {!hidePrice &&
                     <div className='flex gap-2'>
                         <span className='p-semibold-14 w-min rounded-full
-                     bg-green-100 px-4 py-1 text-green-60'>
+                     bg-green-100 dark:bg-green-400 px-4 py-1 text-green-60'>
                             {event.isFree ? "FREE" : `$${event.price}`}
                         </span>
                         <p className='p-semibold-14 w-min rounded-full 
-                              bg-grey-500/10 px-4 py-1 text-grey-500 line-clamp-1'>
+                              bg-grey-500/10  dark:bg-grey-50 px-4 py-1 text-grey-500 line-clamp-1'>
                             {event.category.name}
                         </p>
                     </div>
                 }
 
-                <p className='p-medium-16 p-medium-18 text-grey-500'>
+                <p className='p-medium-16 p-medium-18 text-grey-500  dark:text-grey-50'>
                     {formatDateTime(event.startDateTime).dateTime}
                 </p>
 
                 <Link href={`/events/${event._id}`}>
-                    <p className='p-medium-16 md:p-medium-20 line-clamp-2 flex-1 text-black'>
+                    <p className='p-medium-16 md:p-medium-20 line-clamp-2 flex-1 text-black dark:text-white'>
                         {event.title}
                     </p>
                 </Link>
                 <div className='flex-between w-full'>
-                    <p className='p-medium-14 md:p-medium-16 text-grey-600'>
+                    <p className='p-medium-14 md:p-medium-16 text-grey-600 dark:text-grey-50'>
                         {event.organizer.firstName} {event.organizer.lastName}
                     </p>
                     {
