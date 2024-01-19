@@ -36,7 +36,7 @@ const Profile = async ({ searchParams }: SearchParamProps) => {
                     </Button>
                 </div>
             </section>
-            <section className='wrapper py-8'>
+            <section className='wrapper py-8 '>
                 <Collection
                     data={orderedEvents}
                     emptyTitle="No event tickets purchased yet"

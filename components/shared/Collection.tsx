@@ -50,7 +50,7 @@ const Collection = ({
                 ) :
                 (
                     <div className='flex-center wrapper flex-col gap-5  w-full
-                     bg-grey-50 min-h-[200px] rounded-[14px] py-28 text-center'>
+                     bg-grey-50 dark:bg-slate-900 min-h-[200px] rounded-[14px] py-28 text-center'>
                         <h3 className='p-bold-20 md:h5-bold'>{emptyTitle}</h3>
                         <p className='p-regular-14'>{emptyStateSubText}</p>
                     </div>

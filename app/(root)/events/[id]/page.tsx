@@ -6,7 +6,7 @@ import { formatDateTime } from '@/lib/utils'
 import Collection from '@/components/shared/Collection'
 import CheckoutButton from '@/components/shared/CheckoutButton'
 
-const EventDetails = async ({ params: { id } , searchParams}: SearchParamProps) => {
+const EventDetails = async ({ params: { id }, searchParams }: SearchParamProps) => {
     const event = await getEventById(id)
     const relatedEvents = await getRelatedEventsByCategory(
         {
@@ -27,16 +27,18 @@ const EventDetails = async ({ params: { id } , searchParams}: SearchParamProps) 
                             <h2 className='h2-bold'>{event.title}</h2>
                             <div className='flex flex-col gap-3 sm:flex-row sm:items-center'>
                                 <div className='flex gap-3 text-center items-center'>
-                                    <p className='p-bold-20 rounded-full bg-green-500/10 px-5 py-2 text-green-700'>{event.isFree ? "FREE" : `$${event.price}`}</p>
-                                    <p className='p-medium-16 rounded-full bg-grey-500/10 px-4 py-2.5 text-grey-500'>
+                                    <p className='p-bold-20 rounded-full bg-green-500/10    dark:bg-green-500 
+                                                  dark:text-green-200 px-5 py-2 text-green-700'>{event.isFree ? "FREE" : `$${event.price}`}</p>
+                                    <p className='p-medium-16 rounded-full bg-grey-500/10  dark:bg-grey-500 
+                                                 dark:text-grey-50 px-4 py-2.5 text-grey-500'>
                                         {event.category.name}
                                     </p>
                                 </div>
                                 <p className='p-medium-18 ml-2 mt-2 sm:mt-0'>
-                                    by {' '}
+                                    <span className='text-primary-500'>by {' '}</span>
                                     <span className='text-primary-500'>{event.organizer.firstName} {event.organizer.lastName}</span>
                                 </p>
-                                <CheckoutButton event={event}/>
+                                <CheckoutButton event={event} />
                             </div>
                         </div>
                         <div className='flex flex-col gap-5'>
@@ -68,7 +70,7 @@ const EventDetails = async ({ params: { id } , searchParams}: SearchParamProps) 
             </section>
             {/* Events From the Same Category  */}
             <section className='wrapper my-8 flex flex-col gap-8 md:gap-12'>
-               <h2 className='h2-bold'>Related Events</h2>
+                <h2 className='h2-bold'>Related Events</h2>
                 <Collection
                     data={relatedEvents?.data}
                     emptyTitle="No Events Found"
