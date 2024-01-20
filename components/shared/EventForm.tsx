@@ -194,7 +194,9 @@ const EventForm = ({ userId, type, event, eventId }: eventParams) => {
                                     <div className="flex-center bg-grey-50 dark:bg-grey-600 h-[54px] w-full overflow-hidden rounded-full px-4 py-2">
                                         <Image src={CalenderIcon} alt="calender" height={24} width={24} className="filter-grey" />
                                         <p className="ml-3 text-gray-600 dark:text-gray-300  whitespace-nowrap">Start Date:</p>
-                                        <DatePicker selected={field.value} onChange={(date: Date) => field.onChange(date)}
+                                        <DatePicker selected={field.value}
+                                            onChange={(date: Date) => field.onChange(date)}
+                                            minDate={new Date()}
                                             showTimeSelect
                                             timeInputLabel="Time:"
                                             dateFormat="MM/dd/yyyy h:mm aa"
@@ -214,7 +216,9 @@ const EventForm = ({ userId, type, event, eventId }: eventParams) => {
                                     <div className="flex-center bg-grey-50 dark:bg-grey-600 h-[54px] w-full overflow-hidden rounded-full px-4 py-2">
                                         <Image src={CalenderIcon} alt="calender" height={24} width={24} className="filter-grey" />
                                         <p className="ml-3 text-gray-600 dark:text-gray-300 whitespace-nowrap">End Date:</p>
-                                        <DatePicker selected={field.value} onChange={(date: Date) => field.onChange(date)}
+                                        <DatePicker selected={field.value}
+                                            onChange={(date: Date) => field.onChange(date)}
+                                            minDate={new Date()}
                                             showTimeSelect
                                             timeInputLabel="Time:"
                                             dateFormat="MM/dd/yyyy h:mm aa"
