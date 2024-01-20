@@ -4,7 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { Button } from "@/components/ui/button"
 import {
-    Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage,
+    Form, FormControl, FormField, FormItem, FormMessage,
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import { eventSchema, eventSchemaType } from "@/lib/validator"
@@ -12,7 +12,7 @@ import { eventDefaultValues } from "@/constants"
 import Dropdown from "./Dropdown"
 import { Textarea } from "@/components/ui/textarea"
 import FileUploader from "./FileUploader"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import Image from "next/image"
 import LocationIcon from '@/public/assets/icons/location-grey.svg'
 import CalenderIcon from '@/public/assets/icons/calendar.svg'
@@ -41,14 +41,24 @@ const EventForm = ({ userId, type, event, eventId }: eventParams) => {
         defaultValues: type === 'update' && event ?
             {
                 ...event, startDateTime: new Date(event.startDateTime),
-                endDateTime: new Date(event.endDateTime)
+                endDateTime: new Date(event.endDateTime),
+                categoryId: event.category._id
             }
             : eventDefaultValues
     })
 
+    console.log(form.getValues())
     const [files, setFiles] = useState<File[]>([])
     const { startUpload } = useUploadThing('imageUploader')
     const router = useRouter()
+
+    const isFree = form.getValues('isFree');
+
+    useEffect(() => {
+        if (isFree) {
+            form.resetField('price')
+        }
+    }, [isFree])
 
     async function onSubmit(values: eventSchemaType) {
         let uploadImageUrl = values.imageUrl;
@@ -89,7 +99,7 @@ const EventForm = ({ userId, type, event, eventId }: eventParams) => {
                     event: { ...values, _id: eventId!, imageUrl: uploadImageUrl },
                     path: `/events/${eventId}`
                 })
-                
+
                 if (updatedEvent) {
                     form.reset()
                     router.push(`/events/${updatedEvent._id}`)
@@ -225,7 +235,7 @@ const EventForm = ({ userId, type, event, eventId }: eventParams) => {
                                 <FormControl>
                                     <div className="flex-center bg-grey-50  dark:bg-grey-600 h-[54px] w-full overflow-hidden rounded-full px-4 py-2">
                                         <Image src={DollarIcon} alt="dollar" height={24} width={24} className="filter-grey" />
-                                        <Input type="number" placeholder="price" {...field} className="p-regular-16 border-0 bg-grey-50 dark:bg-grey-600 dark:placeholder:text-gray-300  outline-offset-0 focus:border-0 focus-visible:ring-0 focus-visible:ring-offset-0" />
+                                        <Input {...field} disabled={isFree} type="number" placeholder="price" className="p-regular-16 border-0 bg-grey-50 dark:bg-grey-600 dark:placeholder:text-gray-300  outline-offset-0 focus:border-0 focus-visible:ring-0 focus-visible:ring-offset-0" />
                                         <FormField
                                             control={form.control}
                                             name="isFree"
