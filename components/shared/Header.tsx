@@ -20,21 +20,30 @@ const Header = () => {
           </nav>
         </SignedIn>
 
-        <div className="flex w-32 justify-end gap-3">
-          <SignedIn>
-            <UserButton afterSignOutUrl="/"></UserButton>
-            <MobileNav />
-          </SignedIn>
-
-          <SignedOut>
-            <Button asChild className="rounded-full" size="lg" >
-              <Link href="/sign-in">
-                Login
-              </Link>
-            </Button>
-          </SignedOut>
+        <div className="flex-between md:hidden">
           <ThemeSwitch />
         </div>
+
+        <div className="flex justify-center items-center gap-4">
+          <div className="flex w-32 justify-end gap-3">
+            <SignedIn>
+              <UserButton afterSignOutUrl="/"></UserButton>
+              <MobileNav />
+            </SignedIn>
+
+            <SignedOut>
+              <Button asChild className="rounded-full" size="lg" >
+                <Link href="/sign-in">
+                  Login
+                </Link>
+              </Button>
+            </SignedOut>
+          </div>
+          <div className="md:flex hidden">
+            <ThemeSwitch />
+          </div>
+        </div>
+
       </div>
     </header>
   )
