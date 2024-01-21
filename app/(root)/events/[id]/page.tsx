@@ -63,7 +63,7 @@ const EventDetails = async ({ params: { id }, searchParams }: SearchParamProps) 
                         <div className="flex flex-col gap-2">
                             <p className="p-bold-20 text-grey-600">What You'll Learn:</p>
                             <p className="p-medium-16 lg:p-regular-18">{event.description}</p>
-                            <p className="p-medium-16 lg:p-regular-18 truncate text-primary-500 underline">{event.url}</p>
+                            <a href={event.url} target='_blank' className="p-medium-16 lg:p-regular-18 truncate text-primary-500 underline">{event.url}</a>
                         </div>
                     </div>
                 </div>
@@ -77,7 +77,7 @@ const EventDetails = async ({ params: { id }, searchParams }: SearchParamProps) 
                     emptyStateSubText="Come back later"
                     collectionType="All_Events"
                     limit={3}
-                    page={searchParams.page as string}
+                    page={Number(searchParams?.page) || 1}
                     totalPages={relatedEvents?.totalPages}
                 />
             </section>
