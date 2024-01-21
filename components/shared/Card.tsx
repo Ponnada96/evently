@@ -36,7 +36,7 @@ const Card = ({ event, hasOrderLink, hidePrice }: CardProps) => {
                     <div className='absolute top-2 right-2 flex flex-col gap-4 rounded-xl
                                     bg-white dark:bg-primary-foreground p-3 shadow-sm transition-all'>
                         <Link href={`/events/${event._id}/update`}>
-                            <Image src={Edit} alt='edit' className='w-5 h-5 hover:w-7 hover:h-7 hover:shadow-sm ' />
+                            <Image src={Edit} alt='edit' className='w-5 h-5 hover:shadow-sm ' />
                         </Link>
                         <DeleteConfirmation eventId={event._id} />
                     </div>
@@ -51,7 +51,7 @@ const Card = ({ event, hasOrderLink, hidePrice }: CardProps) => {
                             {event.isFree ? "FREE" : `$${event.price}`}
                         </span>
                         <p className='p-semibold-15 w-min rounded-full 
-                              bg-grey-500/10  dark:bg-grey-500 px-4 py-1 text-grey-50 line-clamp-1'>
+                              bg-grey-500/10  dark:bg-grey-500 px-4 py-1 dark:text-grey-50 line-clamp-1'>
                             {event.category.name}
                         </p>
                     </div>
