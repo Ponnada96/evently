@@ -8,7 +8,7 @@ const Footer = () => {
             sm:flex-row flex-between w-full text-center wrapper">
          <AppIcon/>
         <p>
-          2023 Evently. All Rights Reserved.
+          2024 Evently. All Rights Reserved.
         </p>
       </div >
     </footer>
