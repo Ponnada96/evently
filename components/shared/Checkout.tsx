@@ -42,7 +42,7 @@ const Checkout = ({ event, userId }: checkoutProps) => {
 
 
     return (
-        <form action={onCheckout} method='post'>
+        <form action={onCheckout} >
             <Button>
                 {event.isFree ? 'Get Ticket' : 'Buy Ticket'}
             </Button>
