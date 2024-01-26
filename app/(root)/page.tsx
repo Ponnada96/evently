@@ -36,7 +36,7 @@ export default async function Home({ searchParams }: SearchParamProps) {
               <Link href="#events">Explore Now</Link>
             </Button>
           </div>
-          <Image src={Hero} alt="Hero" width={1000} height={1000}
+          <Image src={Hero} alt="Hero" width={1000} height={1000} priority
             className="max-h-[70vh] object-contain object-center 2xl:max-h-[50vh]" />
         </div>
       </section>

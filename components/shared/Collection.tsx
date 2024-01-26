@@ -33,7 +33,7 @@ const Collection = ({
                             {data.map((event) => {
                                 const hasOrderLink = collectionType === 'Events_Organized'
                                 const hidePrice = collectionType === 'My_Tickets'
-                                return <li className='flex justify-center'>
+                                return <li className='flex justify-center' key={event._id}>
                                     <Card event={event} hasOrderLink={hasOrderLink}
                                         hidePrice={hidePrice} />
                                 </li>
