@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import { Poppins } from 'next/font/google'
-import './globals.css'
+import './output.css'
 import icon from '@/public/assets/images/logo.svg'
 import { ClerkProvider } from '@clerk/nextjs'
 import { Providers } from './provider'
