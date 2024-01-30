@@ -8,7 +8,6 @@ import {
 } from "@/components/ui/select"
 import { getAllCategories } from "@/lib/actions/category.actions"
 import { ICategory } from "@/lib/database/models/category.model"
-import { formUrlQuery, removeKeysFromQuery } from "@/lib/utils"
 import { useRouter, useSearchParams } from "next/navigation"
 import { useEffect, useState } from "react"
 
@@ -26,7 +25,8 @@ const CategoryFilter = () => {
         getCategories()
     }, [])
 
-    const onSelectCategory = (category: string) => {
+    const onSelectCategory = async (category: string) => {
+        const { formUrlQuery, removeKeysFromQuery } = (await import('@/lib/utils'))
         let newUrl = ''
         if (category && category !== 'All') {
             newUrl = formUrlQuery({
@@ -43,6 +43,7 @@ const CategoryFilter = () => {
         }
         router.push(newUrl, { scroll: false })
     }
+
     return (
         <Select onValueChange={(value: string) => { onSelectCategory(value) }}>
             <SelectTrigger className="select-field">

@@ -2,7 +2,6 @@
 import { useRouter, useSearchParams } from 'next/navigation'
 import React from 'react'
 import { Button } from '../ui/button'
-import { formUrlQuery } from '@/lib/utils'
 
 type PaginationProps = {
     page: number | string,
@@ -15,10 +14,12 @@ const Pagination = ({ urlParamName, page, totalPages }
     const router = useRouter()
     const searchParams = useSearchParams()
 
-    const onClick = (btnType: 'prev' | 'next') => {
+    const onClick = async (btnType: 'prev' | 'next') => {
         const pageValue = btnType === 'next'
             ? Number(page) + 1
             : Number(page) - 1
+
+        const formUrlQuery = (await import('@/lib/utils')).formUrlQuery;
         const newUrl = formUrlQuery({
             params: searchParams.toString(),
             key: urlParamName || 'page',

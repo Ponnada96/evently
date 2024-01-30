@@ -19,7 +19,7 @@ import {
     AlertDialogTrigger,
 } from "@/components/ui/alert-dialog"
 import { Input } from "../ui/input"
-import { createCategory, getAllCategories } from "@/lib/actions/category.actions"
+import { getAllCategories } from "@/lib/actions/category.actions"
 
 
 type DropdownProps = {
@@ -33,10 +33,12 @@ const Dropdown = ({ onChangeHandler, value }: DropdownProps) => {
     const [newCategory, setNewCategory] = useState("");
 
     const handleAddCategory = () => {
-        createCategory({ categoryName: newCategory.trim() })
-            .then((category) => {
-                setCategories((previousCategories) => [...previousCategories, category])
-            })
+        (import('@/lib/actions/category.actions')).then(({ createCategory }) => {
+            createCategory({ categoryName: newCategory.trim() })
+                .then((category) => {
+                    setCategories((previousCategories) => [...previousCategories, category])
+                })
+        });
     }
 
     useEffect(() => {

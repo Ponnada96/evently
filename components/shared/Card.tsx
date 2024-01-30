@@ -6,13 +6,15 @@ import Arrow from '@/public/assets/icons/arrow.svg'
 import Edit from '@/public/assets/icons/edit.svg'
 import Image from 'next/image'
 import { auth } from '@clerk/nextjs'
-import DeleteConfirmation from './DeleteConfirmation'
+import dynamic from 'next/dynamic'
 
 type CardProps = {
     event: IEvent,
     hasOrderLink?: boolean,
     hidePrice: boolean
 }
+
+const DeleteConfirmation = dynamic(() => import('./DeleteConfirmation'), { ssr: false });
 
 const Card = ({ event, hasOrderLink, hidePrice }: CardProps) => {
 

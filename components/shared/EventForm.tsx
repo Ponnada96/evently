@@ -23,7 +23,6 @@ import "react-datepicker/dist/react-datepicker.css";
 import { Checkbox } from "@/components/ui/checkbox"
 import { useUploadThing } from "@/lib/uploadthing"
 import { useRouter } from "next/navigation"
-import { createEvent, updateEvent } from "@/lib/actions/event.actions"
 import { IEvent } from "@/lib/database/models/event.model"
 
 
@@ -47,7 +46,6 @@ const EventForm = ({ userId, type, event, eventId }: eventParams) => {
             : eventDefaultValues
     })
 
-    console.log(form.getValues())
     const [files, setFiles] = useState<File[]>([])
     const { startUpload } = useUploadThing('imageUploader')
     const router = useRouter()
@@ -73,6 +71,7 @@ const EventForm = ({ userId, type, event, eventId }: eventParams) => {
 
         if (type === 'create') {
             try {
+                const createEvent = (await import('../../lib/actions/event.actions')).createEvent;
                 const newEvent = await createEvent({
                     event: { ...values, imageUrl: uploadImageUrl },
                     userId,
@@ -94,6 +93,7 @@ const EventForm = ({ userId, type, event, eventId }: eventParams) => {
             }
 
             try {
+                const updateEvent = (await import('../../lib/actions/event.actions')).updateEvent;
                 const updatedEvent = await updateEvent({
                     userId,
                     event: { ...values, _id: eventId!, imageUrl: uploadImageUrl },

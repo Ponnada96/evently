@@ -3,7 +3,6 @@
 import { IEvent } from '@/lib/database/models/event.model'
 import React from 'react'
 import { Button } from '../ui/button'
-import { checkoutOrder } from '@/lib/actions/order.actions';
 import { loadStripe } from '@stripe/stripe-js';
 
 type checkoutProps = {
@@ -37,6 +36,8 @@ const Checkout = ({ event, userId }: checkoutProps) => {
             isFree: event.isFree,
             buyerId: userId
         }
+        const checkoutOrder = ((await import ('@/lib/actions/order.actions'))).checkoutOrder
+
         await checkoutOrder(order)
     }
 

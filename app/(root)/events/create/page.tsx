@@ -5,7 +5,6 @@ const createEvent = () => {
     const { sessionClaims } = auth();
     const userId = sessionClaims?.userId as string;
 
-
     return (
         <>
             <section className="bg-primary-50 bg-dotted-pattern 

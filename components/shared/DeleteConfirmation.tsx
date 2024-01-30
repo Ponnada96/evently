@@ -16,7 +16,7 @@ import {
     AlertDialogTrigger,
 } from '@/components/ui/alert-dialog'
 
-import { deleteEvent } from '@/lib/actions/event.actions'
+
 
 export const DeleteConfirmation = ({ eventId }: { eventId: string }) => {
     const pathname = usePathname()
@@ -42,6 +42,7 @@ export const DeleteConfirmation = ({ eventId }: { eventId: string }) => {
                     <AlertDialogAction
                         onClick={() =>
                             startTransition(async () => {
+                                const deleteEvent = (await import('@/lib/actions/event.actions')).deleteEvent;
                                 await deleteEvent({ eventId, path: pathname })
                             })
                         }>
