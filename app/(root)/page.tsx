@@ -2,26 +2,18 @@ import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
 import Hero from "@/public/assets/images/hero.png"
-import Collection from "@/components/shared/Collection";
-import { getAllEvents } from "@/lib/actions/event.actions";
 import Search from "@/components/shared/Search";
 import { SearchParamProps } from "@/types";
 import CategoryFilter from "@/components/shared/CategoryFilter";
+import AllEvents from "@/components/shared/AllEvents";
+import { Suspense } from "react";
+import Loading from "@/components/loading";
 
 export default async function Home({ searchParams }: SearchParamProps) {
 
   const page = Number(searchParams?.page) || 1;
   const searchText = (searchParams?.query as string) || '';
   const category = (searchParams?.category as string) || '';
-
-
-  const events = await getAllEvents({
-    query: searchText,
-    category: category,
-    limit: 6,
-    page: page
-  });
-
 
   return (
     <>
@@ -47,15 +39,9 @@ export default async function Home({ searchParams }: SearchParamProps) {
           <Search />
           <CategoryFilter />
         </div>
-        <Collection
-          data={events?.data}
-          emptyTitle="No Events Found"
-          emptyStateSubText="Come back later"
-          collectionType="All_Events"
-          limit={3}
-          page={page}
-          totalPages={events?.totalPages}
-        />
+        <Suspense fallback={<Loading />}>
+          <AllEvents page={page} searchText={searchText} category={category} />
+        </Suspense>
       </section>
     </>
   )
