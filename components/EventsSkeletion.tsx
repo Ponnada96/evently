@@ -2,12 +2,12 @@ import React from 'react'
 
 const EventsSkeletion = ({ length }: { length: number }) => {
     return (
-        <div className='flex flex-col items-center gap-10'>
+        <div role='staus' className='flex flex-col items-center gap-10 animate-pulse'>
             <div className='grid w-full grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:gap-10 '>
-                {Array.from({ length: 6 }, (_, index) => (
-                    <div key={index} role='status' className='group relative flex min-h-[380px] w-full max-w-[400px]
+                {Array.from({ length: length }, (_, index) => (
+                    <div key={index} role='status' className='group relative flex min-h-[380px] w-full      max-w-[400px]
                         flex-col overflow-hidden rounded-xl bg-white dark:bg-primary-foreground shadow-md 
-                        transition-all md:min-h-[438px] m-auto'>
+                        transition-all md:min-h-[438px] m-auto '>
 
                         <div className='w-full h-[207px] bg-gray-200 dark:bg-gray-700'></div>
                         <div className='flex mt-2 gap-3 ml-4'>
