@@ -7,7 +7,7 @@ import { SearchParamProps } from "@/types";
 import CategoryFilter from "@/components/shared/CategoryFilter";
 import AllEvents from "@/components/shared/AllEvents";
 import { Suspense } from "react";
-import EventsSkeletion from "@/components/EventsSkeletion";
+import EventsSkeletion from "@/components/EventsSkeleton";
 
 export default async function Home({ searchParams }: SearchParamProps) {
 

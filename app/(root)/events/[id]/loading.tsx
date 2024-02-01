@@ -1,4 +1,4 @@
-import EventsSkeletion from '@/components/EventsSkeletion';
+import EventsSkeletion from '@/components/EventsSkeleton';
 import React from 'react';
 
 const loading = () => {
