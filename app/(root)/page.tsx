@@ -7,7 +7,7 @@ import { SearchParamProps } from "@/types";
 import CategoryFilter from "@/components/shared/CategoryFilter";
 import AllEvents from "@/components/shared/AllEvents";
 import { Suspense } from "react";
-import Loading from "@/components/loading";
+import EventsSkeletion from "@/components/EventsSkeletion";
 
 export default async function Home({ searchParams }: SearchParamProps) {
 
@@ -39,7 +39,7 @@ export default async function Home({ searchParams }: SearchParamProps) {
           <Search />
           <CategoryFilter />
         </div>
-        <Suspense fallback={<Loading />}>
+        <Suspense fallback={<EventsSkeletion length={6}/>}>
           <AllEvents page={page} searchText={searchText} category={category} />
         </Suspense>
       </section>
