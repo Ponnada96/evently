@@ -37,6 +37,7 @@ Built on Next.js 14, the events application stands as a comprehensive, full-stac
 - TailwindCSS
 - Stripe
 - Zod
+- MongoDB
 - React Hook Form
 - Shadcn
 - uploadthing
